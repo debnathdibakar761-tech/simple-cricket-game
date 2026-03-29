@@ -38,6 +38,15 @@
 
 
 <script>
+
+    let score = {
+        win : 0 ,
+        lost: 0 ,
+        tie : 0 ,
+    };
+
+
+    
         
         function generateComputerChoice () {
              
@@ -58,34 +67,48 @@
             if (userChoice === 'Bat') {
 
                    if (computerChoice === 'Ball') {
-                      return 'you won';
+                      score.win ++ ;
+                      return 'you won';                   
                 }  else if ( computerChoice === 'Stump' ){
-                      return 'Computer wins';
+                      score.lost ++ ;
+                      return 'Computer wins';                   
                 }  else {
+                      score.tie ++ ;
                       return 'it\s a tie';
+                      
                 }  
              
 
             } else if (userChoice === 'Ball') {
                     
                     if (computerChoice === 'Ball') {
-                        return 'it\s a tie';
+                         score.tie ++ ;
+                        return 'it\s a tie';                      
                     }else if ( computerChoice === 'Stump' ){
-                        return'you won';
+                        score.win ++ ;
+                        return'you won';                       
                     }else if ( computerChoice === 'Bat' ){
+                        score.lost ++ ;
                         return 'Computer wins';
+                        
                     }
                     
 
 
             } else if (userChoice === 'Stump') {
-
+                    
                     if (computerChoice === 'Ball') {
+                         score.lost ++ ;
                         return 'Computer wins';
+                       
                     }else if ( computerChoice === 'Stump' ){
+                        score.tie ++ ;
                         return'it\s a tie';
+                        
                     }else if ( computerChoice === 'Bat' ){
+                         score.win ++;
                         return 'you won';
+                       
                     }                 
 
             }
@@ -94,9 +117,15 @@
 
 
          function ShowResult (userChoice , computerChoice) {
+                
                 let resultMsg = getResult (userChoice , computerChoice);
                 alert(`You have chosen ${userChoice}. \nComputer choice is  ${computerChoice} \n${resultMsg}`);
-            }   
+                console.log (score);
+
+            } 
+            
+            
+
 
 
 
