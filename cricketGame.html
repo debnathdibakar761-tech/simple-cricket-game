@@ -7,37 +7,75 @@
     <style>
         body {
             text-align: center;
+            background-color: rgb(245, 244, 242);
         }
+        .Choice-image {
+        background-color: rgb(253, 251, 251);
+        border-radius: 8px;
+        padding: 5px;
+        height: 100px;
+        border: azure;
+        
+       }
+         h1{
+            color: red;
+            font-size: xx-large;
+            font-size: xx-large;
+            font-family :'Times New Roman', Times, serif;
+           
+        } 
+        .reset-button {
+            padding-bottom: 20px;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-left: 20px;
+            font-size: xx-large;
+            background-color: red;
+            color: white;
+           font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-radius: 10px;
+            font-weight: bolder;
+
+        }
+   
+        
     </style>
 </head>
 <body>
 
-    <h1>Bat Ball Stump Game</h1>
+    <h1 >Bat Ball Stump Game</h1>
+   
 
-
-    <button onclick="
+    <button  onclick="
        let computerChoice = generateComputerChoice ();
        ShowResult ('Bat' , computerChoice);
-
-
-    ">Bat</button>
+    ">
+       <img src="bat.jpg" alt="Bat Image" class="Choice-image">
+    </button>
 
 
      <button onclick="
         let computerChoice = generateComputerChoice();
         ShowResult('Ball' , computerChoice);
-    ">Ball</button>
+    "><img src="ball.jpeg" alt="Ball Image" class="Choice-image"></button>
 
 
     <button onclick="
         let computerChoice = generateComputerChoice(); 
         ShowResult('Stump', computerChoice);  
-    ">Stump</button>
+    "><img src="stump.jpeg" alt="Stump Image" class="Choice-image"></button>
 
-    <button onclick="
+    <br> <br> <br><hr>
+
+    <button class="reset-button" onclick="
        localStorage.clear() 
        resetScore();
-    ">Clear</button>
+    ">Reset</button>
+
+<h3 id="user-move"></h3>
+<h3 id="computer-move"></h3>
+<h3 id="result"></h3>
+<h3 id="score"></h3>
 
 
 
@@ -139,7 +177,14 @@
                 let resultMsg = getResult (userChoice , computerChoice);
                 localStorage.setItem ('score', JSON.stringify(score));
 
-                alert(`You have chosen ${userChoice}. \nComputer choice is  ${computerChoice} \n${resultMsg} \n${score.displayScore()}`);
+                document.querySelector('#user-move').innerText = ` You have chosen ${userChoice}`;
+
+                document.querySelector('#computer-move').innerText = `Computer choice is ${computerChoice}`;
+
+                
+                document.querySelector('#result').innerText = resultMsg;
+                document.querySelector('#score').innerText = score.displayScore();
+
                 
             } 
             
